@@ -336,7 +336,7 @@ static void SetRedLEDState(uint16_t state)
 }
 static void SetGreenLEDState(uint16_t state)
 {
-#if CANOPEN_LED_GREEN_ACTIVE_HIGH
+#if CONFIG_CANOPEN_LED_GREEN_ACTIVE_HIGH
     if(state != 0) {
         GREEN_LED_SET;
     } else {
