@@ -1,5 +1,11 @@
 name: Bootloader Build
-on: push
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  create:
+    tags:
 
 jobs:
   run-build:
@@ -15,14 +21,36 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v4
         with:
-          ref: 'main'
+          ref: ${{ github.ref }}
           submodules: 'true'
       - name: List checkout files
         run: ls /myBuild
       - name: Build
         run: cd /myBuild && chmod a+x build.sh && ./build.sh
-      - name: Upload Artifacts
+      - name: Upload Artifacts (Regular Build)
+        if: github.event_name != 'create'
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifact
+          name: build-artifact-${{ github.sha }}
           path: /myBuild/artifact/
+      - name: Create GitHub Release
+        if: github.event_name == 'create' && github.ref_type == 'tag'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Assets
+        if: github.event_name == 'create' && github.ref_type == 'tag'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /myBuild/artifact/
+          asset_name: CANopenNode_C2000_bootloader_${{ github.ref_name }}.zip
+          asset_content_type: application/zip
