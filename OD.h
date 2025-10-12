@@ -16,7 +16,7 @@
 
         Created:      17/6/2023 7:20:50 pm
         Created By:   Sicris Rey Embay
-        Modified:     29/5/2024 8:09:28 pm
+        Modified:     12/10/2025 2:59:15 pm
         Modified By:  
 
     Device Info:
@@ -54,6 +54,7 @@
 *******************************************************************************/
 typedef struct {
     uint32_t x1000_deviceType;
+    char x100A_manufacturerSoftwareVersion[5];
     uint32_t x1014_COB_ID_EMCY;
     uint16_t x1015_inhibitTimeEMCY;
     uint16_t x1017_producerHeartbeatTime;
@@ -99,14 +100,15 @@ extern OD_ATTR_OD OD_t *OD;
 #define OD_ENTRY_H1000 &OD->list[0]
 #define OD_ENTRY_H1001 &OD->list[1]
 #define OD_ENTRY_H1003 &OD->list[2]
-#define OD_ENTRY_H1014 &OD->list[3]
-#define OD_ENTRY_H1015 &OD->list[4]
-#define OD_ENTRY_H1017 &OD->list[5]
-#define OD_ENTRY_H1018 &OD->list[6]
-#define OD_ENTRY_H1F50 &OD->list[7]
-#define OD_ENTRY_H1F51 &OD->list[8]
-#define OD_ENTRY_H1F52 &OD->list[9]
-#define OD_ENTRY_H2000 &OD->list[10]
+#define OD_ENTRY_H100A &OD->list[3]
+#define OD_ENTRY_H1014 &OD->list[4]
+#define OD_ENTRY_H1015 &OD->list[5]
+#define OD_ENTRY_H1017 &OD->list[6]
+#define OD_ENTRY_H1018 &OD->list[7]
+#define OD_ENTRY_H1F50 &OD->list[8]
+#define OD_ENTRY_H1F51 &OD->list[9]
+#define OD_ENTRY_H1F52 &OD->list[10]
+#define OD_ENTRY_H2000 &OD->list[11]
 
 
 /*******************************************************************************
@@ -115,14 +117,15 @@ extern OD_ATTR_OD OD_t *OD;
 #define OD_ENTRY_H1000_deviceType &OD->list[0]
 #define OD_ENTRY_H1001_errorRegister &OD->list[1]
 #define OD_ENTRY_H1003_pre_definedErrorField &OD->list[2]
-#define OD_ENTRY_H1014_COB_ID_EMCY &OD->list[3]
-#define OD_ENTRY_H1015_inhibitTimeEMCY &OD->list[4]
-#define OD_ENTRY_H1017_producerHeartbeatTime &OD->list[5]
-#define OD_ENTRY_H1018_identity &OD->list[6]
-#define OD_ENTRY_H1F50_downloadProgramData &OD->list[7]
-#define OD_ENTRY_H1F51_programControl &OD->list[8]
-#define OD_ENTRY_H1F52_verifyApplicationSoftware &OD->list[9]
-#define OD_ENTRY_H2000_bootloader &OD->list[10]
+#define OD_ENTRY_H100A_manufacturerSoftwareVersion &OD->list[3]
+#define OD_ENTRY_H1014_COB_ID_EMCY &OD->list[4]
+#define OD_ENTRY_H1015_inhibitTimeEMCY &OD->list[5]
+#define OD_ENTRY_H1017_producerHeartbeatTime &OD->list[6]
+#define OD_ENTRY_H1018_identity &OD->list[7]
+#define OD_ENTRY_H1F50_downloadProgramData &OD->list[8]
+#define OD_ENTRY_H1F51_programControl &OD->list[9]
+#define OD_ENTRY_H1F52_verifyApplicationSoftware &OD->list[10]
+#define OD_ENTRY_H2000_bootloader &OD->list[11]
 
 
 /*******************************************************************************

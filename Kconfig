@@ -120,6 +120,10 @@ config BITRATE
     default 20 if BITRATE_20KBPS
     default 10 if BITRATE_10KBPS
 
+config AUTO_JUMP_TO_APP
+    bool "Auto jump to application"
+    default y
+
 menuconfig HAS_EEPROM
     bool "EEPROM"
     default n

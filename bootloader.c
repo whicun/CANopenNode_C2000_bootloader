@@ -429,9 +429,15 @@ int main()
             BOOT_FLAG_VAL = 0UL;
             bootMode = MODE_RUN_BOOT;
         } else {
+#if CONFIG_AUTO_JUMP_TO_APP
             /* Default is Timer mode */
             bootMode = MODE_TIMER;
             timerCounter = 0;
+#else
+            /* Auto-jump to Application is disable.  Thus, remain in Bootloader */
+            BOOT_FLAG_VAL = 0UL;
+            bootMode = MODE_RUN_BOOT;
+#endif
         }
     }
 

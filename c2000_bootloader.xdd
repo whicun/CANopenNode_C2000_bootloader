@@ -15,7 +15,7 @@
         <ProfileTechnology>CANopen</ProfileTechnology>
       </ISO15745Reference>
     </ProfileHeader>
-    <ProfileBody xmlns:q1="http://www.canopen.org/xml/1.1" xsi:type="q1:ProfileBody_Device_CANopen" formatName="CANopen" formatVersion="1.0" fileName="c2000_bootloader.xdd" fileCreator="Sicris Rey Embay" fileCreationDate="2023-06-17" fileCreationTime="19:20:50.0000000+08:00" fileModifiedBy="" fileModificationDate="2024-05-29" fileModificationTime="20:09:28.9267523+08:00" fileVersion="1" supportedLanguages="en" xmlns="">
+    <ProfileBody xmlns:q1="http://www.canopen.org/xml/1.1" xsi:type="q1:ProfileBody_Device_CANopen" formatName="CANopen" formatVersion="1.0" fileName="c2000_bootloader.xdd" fileCreator="Sicris Rey Embay" fileCreationDate="2023-06-17" fileCreationTime="19:20:50.0000000+08:00" fileModifiedBy="" fileModificationDate="2025-10-12" fileModificationTime="14:59:15.1011358+08:00" fileVersion="1" supportedLanguages="en" xmlns="">
       <q1:DeviceIdentity>
         <q1:vendorName></q1:vendorName>
         <q1:vendorID></q1:vendorID>
@@ -181,6 +181,12 @@ Value: 0x424F4F54 ("BOOT")</description>
             <label lang="en">Standard error field</label>
             <UDINT />
           </q1:parameter>
+          <q1:parameter uniqueID="UID_OBJ_100A">
+            <label lang="en">Manufacturer software version</label>
+            <STRING />
+            <q1:defaultValue value="1.00" />
+            <q1:property name="CO_storageGroup" value="PERSIST_COMM" />
+          </q1:parameter>
           <q1:parameter uniqueID="UID_OBJ_1014" access="readWrite">
             <description lang="en">* bit 31: If set, EMCY does NOT exist / is NOT valid
 * bit 11-30: set to 0
@@ -344,7 +350,7 @@ Bit7 = Sector H</description>
         <ProfileTechnology>CANopen</ProfileTechnology>
       </ISO15745Reference>
     </ProfileHeader>
-    <ProfileBody xmlns:q2="http://www.canopen.org/xml/1.1" xsi:type="q2:ProfileBody_CommunicationNetwork_CANopen" formatName="CANopen" formatVersion="1.0" fileName="c2000_bootloader.xdd" fileCreator="Sicris Rey Embay" fileCreationDate="2023-06-17" fileCreationTime="19:20:50.0000000+08:00" fileModificationDate="2024-05-29" fileModificationTime="20:09:28.9267523+08:00" fileVersion="1" supportedLanguages="en" xmlns="">
+    <ProfileBody xmlns:q2="http://www.canopen.org/xml/1.1" xsi:type="q2:ProfileBody_CommunicationNetwork_CANopen" formatName="CANopen" formatVersion="1.0" fileName="c2000_bootloader.xdd" fileCreator="Sicris Rey Embay" fileCreationDate="2023-06-17" fileCreationTime="19:20:50.0000000+08:00" fileModificationDate="2025-10-12" fileModificationTime="14:59:15.1011358+08:00" fileVersion="1" supportedLanguages="en" xmlns="">
       <ApplicationLayers>
         <q2:CANopenObjectList>
           <CANopenObject index="1000" name="Device type" objectType="7" PDOmapping="no" uniqueIDRef="UID_OBJ_1000" />
@@ -368,6 +374,7 @@ Bit7 = Sector H</description>
             <CANopenSubObject subIndex="0F" name="Standard error field" objectType="7" PDOmapping="no" uniqueIDRef="UID_SUB_10030F" />
             <CANopenSubObject subIndex="10" name="Standard error field" objectType="7" PDOmapping="no" uniqueIDRef="UID_SUB_100310" />
           </CANopenObject>
+          <CANopenObject index="100A" name="Manufacturer software version" objectType="7" PDOmapping="no" uniqueIDRef="UID_OBJ_100A" />
           <CANopenObject index="1014" name="COB-ID EMCY" objectType="7" PDOmapping="no" uniqueIDRef="UID_OBJ_1014" />
           <CANopenObject index="1015" name="Inhibit time EMCY" objectType="7" PDOmapping="no" uniqueIDRef="UID_OBJ_1015" />
           <CANopenObject index="1017" name="Producer heartbeat time" objectType="7" PDOmapping="no" uniqueIDRef="UID_OBJ_1017" />

@@ -22,6 +22,7 @@
 *******************************************************************************/
 OD_ATTR_PERSIST_COMM OD_PERSIST_COMM_t OD_PERSIST_COMM = {
     .x1000_deviceType = 0x424F4F54,
+    .x100A_manufacturerSoftwareVersion = {'1', '.', '0', '0', 0},
     .x1014_COB_ID_EMCY = 0x00000080,
     .x1015_inhibitTimeEMCY = 0x0000,
     .x1017_producerHeartbeatTime = 0x1388,
@@ -54,6 +55,7 @@ typedef struct {
     OD_obj_var_t o_1000_deviceType;
     OD_obj_var_t o_1001_errorRegister;
     OD_obj_array_t o_1003_pre_definedErrorField;
+    OD_obj_var_t o_100A_manufacturerSoftwareVersion;
     OD_obj_var_t o_1014_COB_ID_EMCY;
     OD_obj_var_t o_1015_inhibitTimeEMCY;
     OD_obj_var_t o_1017_producerHeartbeatTime;
@@ -82,6 +84,11 @@ static CO_PROGMEM ODObjs_t ODObjs = {
         .attribute = ODA_SDO_R | ODA_MB,
         .dataElementLength = 4,
         .dataElementSizeof = sizeof(uint32_t)
+    },
+    .o_100A_manufacturerSoftwareVersion = {
+        .dataOrig = &OD_PERSIST_COMM.x100A_manufacturerSoftwareVersion[0],
+        .attribute = ODA_SDO_R | ODA_STR,
+        .dataLength = 4
     },
     .o_1014_COB_ID_EMCY = {
         .dataOrig = &OD_PERSIST_COMM.x1014_COB_ID_EMCY,
@@ -172,6 +179,7 @@ static OD_ATTR_OD OD_entry_t ODList[] = {
     {0x1000, 0x01, ODT_VAR, &ODObjs.o_1000_deviceType, NULL},
     {0x1001, 0x01, ODT_VAR, &ODObjs.o_1001_errorRegister, NULL},
     {0x1003, 0x11, ODT_ARR, &ODObjs.o_1003_pre_definedErrorField, NULL},
+    {0x100A, 0x01, ODT_VAR, &ODObjs.o_100A_manufacturerSoftwareVersion, NULL},
     {0x1014, 0x01, ODT_VAR, &ODObjs.o_1014_COB_ID_EMCY, NULL},
     {0x1015, 0x01, ODT_VAR, &ODObjs.o_1015_inhibitTimeEMCY, NULL},
     {0x1017, 0x01, ODT_VAR, &ODObjs.o_1017_producerHeartbeatTime, NULL},
