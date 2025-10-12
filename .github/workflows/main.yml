@@ -27,6 +27,11 @@ jobs:
         run: ls /myBuild
       - name: Build
         run: cd /myBuild && chmod a+x build.sh && ./build.sh
+      - name: Create Release Archive
+        if: github.event_name == 'create' && github.ref_type == 'tag'
+        run: |
+          cd /myBuild
+          zip -r CANopenNode_C2000_bootloader_${{ github.ref_name }}.zip artifact/
       - name: Upload Artifacts (Regular Build)
         if: github.event_name != 'create'
         uses: actions/upload-artifact@v4
@@ -51,6 +56,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /myBuild/artifact/
+          asset_path: /myBuild/CANopenNode_C2000_bootloader_${{ github.ref_name }}.zip
           asset_name: CANopenNode_C2000_bootloader_${{ github.ref_name }}.zip
           asset_content_type: application/zip
